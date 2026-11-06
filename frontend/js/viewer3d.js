@@ -315,13 +315,14 @@ const Viewer3D = (function () {
         // Board body
         const boardGeo = new THREE.BoxGeometry(w, thickness, h);
         const boardMat = new THREE.MeshPhongMaterial({
-            color: 0x0a5c2a, // PCB green
+            color: _solderMaskColor || 0x0a5c2a,
             specular: 0x1a8a4a,
             shininess: 40,
             transparent: true,
             opacity: 0.95
         });
         const boardMesh = new THREE.Mesh(boardGeo, boardMat);
+        _boardMesh = boardMesh;
         boardMesh.position.y = -thickness / 2;
         boardMesh.receiveShadow = true;
         boardMesh.userData = { type: 'board' };
@@ -604,6 +605,16 @@ const Viewer3D = (function () {
         _renderer.setSize(w, h);
     }
 
+    let _boardMesh = null;
+    let _solderMaskColor = 0x0a5c2a;
+
+    function setSolderMaskColor(colorHex) {
+        _solderMaskColor = colorHex;
+        if (_boardMesh && _boardMesh.material) {
+            _boardMesh.material.color.setHex(colorHex);
+        }
+    }
+
     /* ---- Public API ---- */
     function destroy() {
         if (_animFrameId) cancelAnimationFrame(_animFrameId);
@@ -625,6 +636,7 @@ const Viewer3D = (function () {
             _bindPopupClose();
         },
         updateFromTopology,
+        setSolderMaskColor,
         resetView,
         toggleGrid,
         destroy
