@@ -31,3 +31,7 @@ Each completed development is tested and committed separately. Existing Vercel d
 - WebGL failure no longer prevents other views from initializing.
 - Local browser QA verified startup, the full brief sequence, explicit lock, reload persistence, evidence status and expanded canvas. GPU rendering could not be visually verified because the QA browser did not provide WebGL.
 - `npm test` runs Python and JavaScript regressions; `npm run build` checks JavaScript syntax and duplicate entrypoint consistency (the app is served without bundling).
+
+## Mutation integrity milestone
+
+Mutations now operate on deep copies, reject structural errors without changing the original design, explicitly reject unsupported commands, allocate non-colliding LED/resistor references, complete the LED series/ground path, and avoid deleting U2 merely because a user mentioned a charger. The previous RP2040 test requested an LED on GPIO5 already assigned to I2C SCL; that case is now correctly rejected and regression-tested. These remain draft mutations: exact package-pin capability, voltage limits, physical placement and complete regulator circuitry are not validated yet.

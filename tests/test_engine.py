@@ -102,8 +102,12 @@ def test_stage_3_mutation_loop():
 
     # Mutation 2: Add LED on GPIO5
     top3, delta2, exp2 = TopologyMutator.apply_mutation(top2, "Add another status LED on GPIO5")
-    assert len([c for c in top3["components"] if c.get("type") == "led"]) >= 2
-    assert "GPIO5" in exp2
+    # RP2040 GPIO5 is already the I2C clock: a valid engine must reject it.
+    assert delta2["status"] == "REJECTED"
+    assert top3 == top2
+    top4, delta3, _ = TopologyMutator.apply_mutation(top2, "Add another status LED on GPIO12")
+    assert delta3["status"] == "APPLIED_DRAFT"
+    assert len([c for c in top4["components"] if c.get("type") == "led"]) >= 2
 
 
 def test_kicad_exporters():

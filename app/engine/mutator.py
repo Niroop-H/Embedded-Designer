@@ -10,6 +10,7 @@ Detects component/net/pin changes from natural language requests:
 from __future__ import annotations
 
 import re
+from copy import deepcopy
 from typing import Any, Dict, List, Tuple
 from .conflict_checker import ConflictChecker
 
@@ -26,6 +27,8 @@ class TopologyMutator:
         Returns:
             (updated_topology, delta_payload, conversational_explanation)
         """
+        original = deepcopy(topology)
+        topology = deepcopy(topology)
         text = instruction.lower().strip()
         delta: Dict[str, Any] = {
             "addComponents": [],
@@ -64,16 +67,16 @@ class TopologyMutator:
                 explanation.append(
                     f"• **Swapped Voltage Regulator**: Replaced `{old_part}` LDO with ultra-high efficiency synchronous Buck converter `TPS62160DSGT` (WSON-8).\n"
                     f"• **Added Power Inductor**: Injected 2.2µH switching inductor (L1) with 2.1A saturation rating to minimize output ripple.\n"
-                    f"• **Thermal & Efficiency Gain**: Efficiency elevated from ~66% to ~93%, eliminating thermal throttling under heavy RF transmit bursts."
+                    f"• **Draft only**: Switching node, feedback, compensation and power-stage validation remain required. No efficiency or thermal performance has been measured."
                 )
 
         # --- CASE 2: Add LED ---
         elif "add" in text and "led" in text:
             # Find next ref des
             existing_leds = [c for c in components if str(c.get("ref", "")).startswith("D")]
-            next_num = len(existing_leds) + 1
+            next_num = max([int(c["ref"][1:]) for c in existing_leds if c["ref"][1:].isdigit()] or [0]) + 1
             new_led_ref = f"D{next_num}"
-            new_r_ref = f"R{len([c for c in components if str(c.get('ref','')).startswith('R')]) + 1}"
+            new_r_ref = f"R{max([int(c['ref'][1:]) for c in components if re.fullmatch(r'R[0-9]+', c.get('ref', ''))] or [0]) + 1}"
 
             # Detect requested GPIO or default
             gpio_match = re.search(r"gpio\s*(\d+)", text)
@@ -103,6 +106,18 @@ class TopologyMutator:
             nets.append(new_net)
             delta["addNets"].append(new_net)
 
+            # Complete the series path and ground return; both are required for an LED circuit.
+            series_net = {"name": f"USER_LED_{next_num}_ANODE", "connections": [f"{new_r_ref}.2", f"{new_led_ref}.A"]}
+            nets.append(series_net)
+            delta["addNets"].append(series_net)
+            ground = next((n for n in nets if n.get("name") == "GND_RAIL"), None)
+            if ground is None:
+                ground = {"name": "GND_RAIL", "connections": []}
+                nets.append(ground)
+                delta["addNets"].append(ground)
+            ground["connections"].append(f"{new_led_ref}.K")
+            delta["updateNets"] = [deepcopy(ground)]
+
             # Update pinmap
             new_pin_entry = {
                 "pinNumber": gpio_num,
@@ -118,12 +133,15 @@ class TopologyMutator:
             explanation.append(
                 f"• **Added Peripherals**: Injected Green Status Indicator `{new_led_ref}` (0603) with current-limiting resistor `{new_r_ref}` (1kΩ, 0603).\n"
                 f"• **GPIO Allocated**: Assigned MCU `{gpio_name}` (Pin #{gpio_num}) with PWM driver capability.\n"
-                f"• **ERC Validation**: Current draw (~2.0mA) safely within MCU maximum single-pin budget (20mA)."
+                f"• **Draft only**: Verify the exact MCU pin capability, LED forward voltage and drive-current budget against manufacturer data."
             )
 
         # --- CASE 3: Remove Battery / Charger ---
         elif "remove" in text and ("battery" in text or "charger" in text or "lipo" in text):
-            to_remove = ["U2", "J2"]  # Charger and battery connector
+            # Never infer a component's role from its reference designator.
+            to_remove = [c.get("ref") for c in components if c.get("role") in ("battery_charger", "battery_connector")]
+            if not to_remove:
+                return original, {"status": "REJECTED", "reason": "No explicitly identified battery components"}, "No change: identify battery components by role before removing them."
             removed_refs = []
             for ref in to_remove:
                 if any(c.get("ref") == ref for c in components):
@@ -131,6 +149,11 @@ class TopologyMutator:
 
             components = [c for c in components if c.get("ref") not in removed_refs]
             delta["removeComponents"] = removed_refs
+            for net in nets:
+                net["connections"] = [ep for ep in net.get("connections", []) if ep.split(".", 1)[0] not in removed_refs]
+                if "pins" in net:
+                    net["pins"] = [pin for pin in net["pins"] if pin.get("ref") not in removed_refs]
+            delta["updateNets"] = deepcopy(nets)
 
             explanation.append(
                 f"• **Removed Battery Management**: Stripped LiPo charger and JST connector `({', '.join(removed_refs)})`.\n"
@@ -171,10 +194,7 @@ class TopologyMutator:
             )
 
         else:
-            explanation.append(
-                f"• Evaluated instruction: *\"{instruction}\"*\n"
-                f"• System topology remains verified and compliant with DFM guidelines."
-            )
+            return original, {"status": "REJECTED", "reason": "Unsupported command"}, "No change: this command is not supported by the deterministic mutation engine."
 
         # Update topology
         topology["components"] = components
@@ -183,7 +203,12 @@ class TopologyMutator:
 
         # Re-run conflict checker
         conflicts = ConflictChecker.verify(topology)
+        blocking = [c for c in conflicts if c["severity"] in ("ERROR", "CRITICAL")]
+        if blocking:
+            return original, {"status": "REJECTED", "conflicts": blocking}, "Mutation rolled back: " + "; ".join(c["message"] for c in blocking)
         topology["conflicts"] = conflicts
+        topology["verification_status"] = "INCOMPLETE"
+        delta["status"] = "APPLIED_DRAFT"
 
         exp_text = "\n".join(explanation)
         if conflicts:

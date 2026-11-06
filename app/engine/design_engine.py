@@ -119,7 +119,7 @@ class DesignEngine:
 
             full_response = (
                 f"[DIALOGUE]\n"
-                f"**Active Mutation Applied:**\n{explanation}\n\n"
+                f"**Mutation {delta.get('status', 'REVIEW')}:**\n{explanation}\n\n"
                 f"[PINOUT_MAP]\n{pinout_table}\n\n"
                 f"[TOPOLOGY_DATA]\n```json\n{delta_json}\n```"
             )
