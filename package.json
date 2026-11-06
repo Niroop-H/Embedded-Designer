@@ -4,10 +4,10 @@
   "description": "KiCad + VS Code Unified Cloud EDA & Embedded Studio for Autonomous Hardware Architecture",
   "main": "frontend/index.html",
   "scripts": {
-    "dev": "python -m uvicorn app.main:app --reload --port 8000",
+    "dev": "python scripts/dev.py",
     "start": "python -m uvicorn app.main:app --host 0.0.0.0 --port 8000",
-    "test": "python run_tests.py",
-    "build": "echo 'Build complete'"
+    "test": "python run_tests.py && python -m unittest discover -s tests -v && node --test tests/brief.test.cjs",
+    "build": "python scripts/check_frontend.py"
   },
   "keywords": [
     "kicad",

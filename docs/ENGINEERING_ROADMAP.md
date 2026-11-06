@@ -22,3 +22,12 @@ The original browser page duplicated root and frontend HTML and displayed hard-c
 NOT_RUN, INCOMPLETE, ERROR, FAIL and stale evidence all block manufacturing release. A hash proves content identity only, not authenticity or engineering validity. Passing ERC/DRC alone does not establish functional, regulatory, environmental, or defence qualification. No defence or manufacturer qualification is currently claimed.
 
 Each completed development is tested and committed separately. Existing Vercel deployment remains the deployment target.
+
+## Implemented workspace milestone
+
+- Focus mode hides both side panels; fullscreen uses the browser API.
+- Guided brief captures application, size/environment, input range, continuous/peak load, runtime, processor selection, computation and interfaces; requires an explicit lock and supports unlock/export. This browser-local brief is not yet wired to the Python generator.
+- 3D preview supports pointer rotation, wheel zoom, component rotations, board cutouts and resource disposal. Geometry remains illustrative, not manufacturer STEP models.
+- WebGL failure no longer prevents other views from initializing.
+- Local browser QA verified startup, the full brief sequence, explicit lock, reload persistence, evidence status and expanded canvas. GPU rendering could not be visually verified because the QA browser did not provide WebGL.
+- `npm test` runs Python and JavaScript regressions; `npm run build` checks JavaScript syntax and duplicate entrypoint consistency (the app is served without bundling).
