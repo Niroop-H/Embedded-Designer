@@ -1,8 +1,10 @@
 # AutonomousHardwareArchitect-AI (AHA-AI)
 
-> **Production-Tier Generative Electronic Design Automation (EDA), 3D Modeling & Virtual Testbench Compilation Engine**
+> **Engineering preview — not qualified for manufacturing or safety-critical use.**
 
-AutonomousHardwareArchitect-AI compresses the traditional hardware engineering lifecycle by translating human functional prompts into valid, production-ready, interactive hardware designs that can be immediately simulated and shipped for manufacturing.
+See [engineering roadmap](docs/ENGINEERING_ROADMAP.md) for implementation status and evidence requirements.
+
+AutonomousHardwareArchitect-AI compresses the traditional hardware engineering lifecycle by translating human functional prompts into interactive draft architectures that require native-tool validation and engineering review before manufacturing.
 
 ---
 
@@ -111,7 +113,7 @@ Structured JSON schema specifying component placements, 3D spatial coordinates, 
 {
   "project_metadata": { "id": "uuid", "base_mcu": "ESP32-S3-WROOM-1" },
   "components": [
-    { "id": "U1", "part": "ESP32-S3-WROOM-1", "package": "QFN-56", "x": 0, "y": 0, "z": 0, "rotation": 0 },
+    { "id": "U1", "part": "ESP32-S3-WROOM-1", "package": "Module_ESP32-S3-WROOM-1", "x": 0, "y": 0, "z": 0, "rotation": 0 },
     { "id": "J1", "part": "USB-C-16P", "package": "USB-C", "x": -34, "y": -10, "z": 0, "rotation": 270 }
   ],
   "nets": [

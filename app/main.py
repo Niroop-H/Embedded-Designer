@@ -118,7 +118,7 @@ async def download_bom(project_id: str) -> Response:
         val = comp.get("value", comp.get("part", ""))
         pkg = comp.get("package", "")
         ctype = comp.get("type", "generic")
-        lines.append(f"{ref},{val},{pkg},{ctype},Production Verified\n")
+        lines.append(f"{ref},{val},{pkg},{ctype},Unverified draft\n")
 
     return Response(
         content="".join(lines),
@@ -151,14 +151,9 @@ async def download_spice(project_id: str) -> Response:
 async def get_verification_report(project_id: str) -> Dict[str, Any]:
     """Generates 8-Gate ERC/DRC/DFM/Firmware verification report with SHA-256 seal."""
     session = DesignEngine.get_or_create_session(project_id)
-    topology = session.topology or {
-        "mcu": {"name": "ESP32-S3-WROOM-1"},
-        "components": [
-            {"id": "U1", "name": "ESP32-S3", "package": "QFN-56", "current_mA": 95.0, "pcbX": 34.0, "pcbY": 24.0},
-            {"id": "C1", "name": "100nF Decoupling", "current_mA": 0.0, "pcbX": 27.5, "pcbY": 28.0}
-        ],
-        "pinmap": [{"pin": "GPIO8", "net": "I2C_SDA"}, {"pin": "GPIO9", "net": "I2C_SCL"}]
-    }
+    if not session.topology:
+        raise HTTPException(status_code=409, detail="No design generated; verification cannot run.")
+    topology = session.topology
     return VerificationReportEngine.generate_report(project_id, topology)
 
 
@@ -168,7 +163,7 @@ async def download_cpl(project_id: str) -> Response:
     session = DesignEngine.get_or_create_session(project_id)
     comps = session.topology.get("components", []) if session.topology else []
     if not comps:
-        comps = [{"ref": "U1", "pcbX": 34.0, "pcbY": 24.0, "rot": 0, "package": "QFN-56", "mpn": "ESP32-S3-WROOM-1"}]
+        raise HTTPException(status_code=409, detail="No design generated.")
     csv_text = ManufacturingExporter.generate_cpl_csv(comps)
     return PlainTextResponse(csv_text, media_type="text/csv", headers={"Content-Disposition": f'attachment; filename="{project_id}_cpl.csv"'})
 
@@ -176,8 +171,7 @@ async def download_cpl(project_id: str) -> Response:
 @app.get("/api/project/{project_id}/download/gerber")
 async def download_gerber(project_id: str) -> Response:
     """Exports Top Copper Gerber X2."""
-    gbr_text = ManufacturingExporter.generate_gerber_top_copper(project_id)
-    return PlainTextResponse(gbr_text, media_type="text/plain", headers={"Content-Disposition": f'attachment; filename="{project_id}_F_Cu.gtl"'})
+    raise HTTPException(status_code=409, detail="Manufacturing release blocked: native KiCad DRC and complete fabrication outputs are required. Placeholder Gerbers are disabled.")
 
 
 # -------------------------------------------------------------------------

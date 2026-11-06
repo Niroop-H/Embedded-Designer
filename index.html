@@ -80,7 +80,7 @@
         <div class="flex items-center gap-2">
           <span class="font-bold text-sm tracking-tight text-white">Devashri S Embedded System Technologies</span>
           <span class="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">by MAH Quantum</span>
-          <span class="hidden md:inline-block px-2 py-0.5 text-[10px] mono rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">v4.0 Manufacturing Edition</span>
+          <span class="hidden md:inline-block px-2 py-0.5 text-[10px] mono rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Engineering Preview</span>
         </div>
         <div class="text-[11px] text-slate-400 truncate hidden sm:block">
           Unified KiCad 9.0 EDA + VS Code (Code-OSS) Firmware Studio + Autonomous Hardware Architect AI
@@ -106,7 +106,7 @@
 
       <button id="btn-fab-export" class="px-3 py-1.5 rounded-md bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
         <i class="fa-solid fa-industry"></i>
-        <span class="hidden sm:inline">Fab Release Package</span>
+        <span class="hidden sm:inline">Export Center</span>
       </button>
 
       <button id="btn-cmd-palette" title="Command Palette (Ctrl+Shift+P)" class="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
@@ -171,7 +171,7 @@
         <div class="p-3 border-b border-slate-800/80 bg-slate-900/40">
           <div class="flex items-center justify-between mb-1">
             <span class="text-[11px] font-semibold uppercase tracking-wider text-cyan-400">3-Stage Autonomous Engine</span>
-            <span class="text-[10px] mono px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">ERC/DRC Live</span>
+            <span class="text-[10px] mono px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">Draft mode</span>
           </div>
           <p class="text-[11px] text-slate-400 leading-relaxed">
             Describe hardware changes or click a quick synthesis command. Updates schematic, PCB layout, C++ firmware, and verification report simultaneously.
@@ -393,7 +393,7 @@
             <button id="btn-3d-iso" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200">Isometric</button>
           </div>
           <div class="mono text-[11px] text-slate-400">
-            Ambient: 25.0°C | Peak Junction: <span id="peak-temp-readout" class="text-emerald-400 font-semibold">48.4°C</span> (Safe &lt; 85°C)
+            Ambient: 25.0°C | Peak Junction: <span id="peak-temp-readout" class="text-emerald-400 font-semibold">Not simulated</span> (model required)
           </div>
         </div>
         <div class="flex-1 relative bg-[#050811] overflow-hidden" id="three-canvas-wrapper">
@@ -422,7 +422,7 @@
               <i class="fa-solid fa-arrows-rotate"></i> Sync Schematic Pins → Code
             </button>
             <button id="btn-compile-firmware" class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center gap-1.5 shadow">
-              <i class="fa-solid fa-play text-[10px]"></i> Build &amp; Verify Firmware
+              <i class="fa-solid fa-play text-[10px]"></i> Check Build Availability
             </button>
           </div>
         </div>
@@ -455,12 +455,12 @@
             <div class="p-3 border-t border-slate-800 bg-[#121215] space-y-2 text-[11px]">
               <div class="font-semibold text-slate-300 flex justify-between">
                 <span>ELF Memory Analyzer</span>
-                <span class="mono text-emerald-400">PASS</span>
+                <span class="mono text-emerald-400">NOT RUN</span>
               </div>
               <div>
                 <div class="flex justify-between text-[10px] mono text-slate-400 mb-0.5">
-                  <span>Flash (.text + .rodata)</span>
-                  <span id="mem-flash-label">218.4 KB / 8 MB (2.7%)</span>
+                  <span>Flash (not measured)</span>
+                  <span id="mem-flash-label">— </span>
                 </div>
                 <div class="w-full h-1.5 bg-slate-800 rounded overflow-hidden">
                   <div id="mem-flash-bar" class="h-full bg-cyan-400" style="width: 14%"></div>
@@ -469,7 +469,7 @@
               <div>
                 <div class="flex justify-between text-[10px] mono text-slate-400 mb-0.5">
                   <span>SRAM (.data + .bss)</span>
-                  <span id="mem-ram-label">44.2 KB / 512 KB (8.6%)</span>
+                  <span id="mem-ram-label">— </span>
                 </div>
                 <div class="w-full h-1.5 bg-slate-800 rounded overflow-hidden">
                   <div id="mem-ram-bar" class="h-full bg-emerald-400" style="width: 18%"></div>
@@ -588,12 +588,12 @@
             <!-- Header Banner -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-4 gap-4">
               <div>
-                <div class="text-[11px] font-bold uppercase tracking-widest text-cyan-400">OFFICIAL HARDWARE &amp; FIRMWARE DESIGN VERIFICATION REPORT</div>
+                <div class="text-[11px] font-bold uppercase tracking-widest text-cyan-400">HARDWARE &amp; FIRMWARE EVIDENCE REVIEW</div>
                 <h1 class="text-xl font-extrabold text-white mt-0.5">Devashri S Embedded System Technologies</h1>
-                <div class="text-xs font-semibold text-slate-300">Engineered &amp; Certified by <span class="text-cyan-300">MAH Quantum</span> — Autonomous EDA &amp; Firmware Verification Division</div>
+                <div class="text-xs font-semibold text-slate-300">Developed by <span class="text-cyan-300">MAH Quantum</span> — Autonomous EDA &amp; Firmware Verification Division</div>
               </div>
               <div class="bg-slate-900 border border-emerald-500/40 rounded-lg px-4 py-2.5 text-right mono">
-                <div id="report-status-badge" class="text-xs font-extrabold text-emerald-400">✓ PASS — MANUFACTURING READY</div>
+                <div id="report-status-badge" class="text-xs font-extrabold text-emerald-400">INCOMPLETE — RELEASE BLOCKED</div>
                 <div id="report-run-id" class="text-[11px] text-slate-400">RUN ID: VER-2026-1106-001</div>
                 <div id="report-timestamp" class="text-[10px] text-slate-500">TIMESTAMP: 2026-11-06 16:27:21 IST</div>
               </div>
@@ -772,8 +772,8 @@
   <footer class="no-print h-6 bg-[#007acc] text-white px-3 flex items-center justify-between text-[11px] mono shrink-0 z-30">
     <div class="flex items-center gap-3">
       <span class="font-bold flex items-center gap-1"><i class="fa-solid fa-code-branch"></i> main*</span>
-      <span id="status-erc-pill" class="flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> ERC: 0 Errors</span>
-      <span id="status-drc-pill" class="flex items-center gap-1"><i class="fa-solid fa-ruler-combined"></i> DRC: IPC-2221 Class 2 PASS</span>
+      <span id="status-erc-pill" class="flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> ERC: NOT RUN</span>
+      <span id="status-drc-pill" class="flex items-center gap-1"><i class="fa-solid fa-ruler-combined"></i> DRC: NOT RUN</span>
       <span class="hidden md:inline" id="status-mcu-pill">Target: ESP32-S3-WROOM-1</span>
     </div>
     <div class="flex items-center gap-3">
@@ -992,7 +992,7 @@ ${pinDefines}
  * Devashri S Embedded System Technologies — by MAH Quantum
  * Target Architecture : ${arch.name}
  * Primary MCU         : ${mcu.name} (${mcu.mpn})
- * Verification Status : ERC PASS | DRC PASS | DFM IPC-2221B CLASS 2 READY
+ * Verification Status : NOT RUN — ENGINEERING DRAFT
  * ============================================================================
  */
 
@@ -1392,7 +1392,7 @@ ${footprintsSExpr}
             <div>Footprint: ${item.package}</div>
             <div>Centroid: X=${comp.pcbX}mm, Y=${comp.pcbY}mm, Rot=${comp.rot}°</div>
             <div>Solder Mask Expansion: 0.05 mm</div>
-            <div>IPC-7351 Courtyard Clearance: 0.25 mm (PASS)</div>
+            <div>Courtyard clearance: requires native DRC</div>
           `;
         });
       });
@@ -1561,91 +1561,17 @@ C_DECOUP_2 VDD_3V3 0 100nF
     // =========================================================================
     function runFullVerificationAndGenerateReport(switchTab = false) {
       const arch = getActiveArchitecture();
-      const totalCurrent = arch.components.reduce((acc, c) => acc + getCatalogItem(c.catId).current_mA, 0);
-      const decouplingCount = arch.components.filter(c => c.catId.startsWith("cap_100nf")).length;
       const now = new Date();
-      const runId = `VER-2026-1106-${String(STATE.verificationRunCount).padStart(3, "0")}`;
-      STATE.verificationRunCount++;
-
-      document.getElementById("report-run-id").textContent = `RUN ID: ${runId}`;
-      document.getElementById("report-timestamp").textContent = `TIMESTAMP: ${now.toISOString().replace("T", " ").slice(0, 19)} UTC`;
-
-      const scorecards = [
-        { label: "ERC Electrical", score: "100%", sub: "0 Rail/Pin Conflicts", color: "text-emerald-400" },
-        { label: "DRC Geometry", score: "PASS", sub: "0.15mm IPC-2221B", color: "text-cyan-400" },
-        { label: "DFM Assembly", score: "99.4%", sub: "IPC-7351B Land Pattern", color: "text-emerald-400" },
-        { label: "Power Integrity", score: `${totalCurrent.toFixed(1)}mA`, sub: "Ripple 8.2mVpp (<30mV)", color: "text-amber-300" },
-        { label: "Thermal Peak", score: "48.4°C", sub: "Margin 36.6°C to 85°C", color: "text-purple-300" },
-        { label: "Firmware Build", score: "0 Warn", sub: "Flash 2.7% | RAM 8.6%", color: "text-blue-400" }
-      ];
-
-      document.getElementById("report-scorecard-grid").innerHTML = scorecards.map(s => `
-        <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
-          <div class="text-[10px] uppercase tracking-wider text-slate-400">${s.label}</div>
-          <div class="text-base font-extrabold mono mt-0.5 ${s.color}">${s.score}</div>
-          <div class="text-[10px] text-slate-400 mt-0.5">${s.sub}</div>
-        </div>
-      `).join("");
-
-      const checks = [
-        { id: "ERC-01", std: "KiCad 9.0 ERC", param: "Power Rail Continuity (+5V VBUS & +3.3V VDD)", val: "3.302 V ±0.4%", req: "3.30 V ±5%", res: "PASS" },
-        { id: "ERC-02", std: "IC Decoupling Audit", param: "High-Frequency MLCC 100nF X7R Placement (<2.5mm from VDD)", val: `${decouplingCount} × 100nF + 10µF Bulk`, req: "≥ 1 per active IC", res: "PASS" },
-        { id: "ERC-03", std: "I2C Bus Termination", param: "Open-Drain SDA/SCL Pull-Up Resistors (400kHz Fast-Mode)", val: "2 × 4.7 kΩ (R1, R2)", req: "2.2 kΩ – 10 kΩ", res: "PASS" },
-        { id: "ERC-04", std: "MCU Pin Multiplexing", param: "GPIO / UART / I2C / USB-OTG Contention Matrix", val: `${arch.pinmap.length} Nets, 0 Collisions`, req: "0 Shared Pin Conflicts", res: "PASS" },
-        { id: "DRC-01", std: "IPC-2221B Class 2", param: "Minimum Copper Trace Width & Conductor Spacing", val: "0.15 mm / 0.15 mm", req: "≥ 0.127 mm (5 mil)", res: "PASS" },
-        { id: "DRC-02", std: "USB 2.0 High-Speed SI", param: "Differential Pair Impedance (USB_D+ / USB_D-) & ESD Clamp", val: "89.8 Ω + USBLC6-2SC6", req: "90 Ω ±10%, IEC 61000-4-2", res: "PASS" },
-        { id: "DFM-01", std: "IPC-7351B / JLCPCB", param: "SMD Pad Solder Mask Dam & Reflow Courtyard Clearance", val: "0.25 mm Courtyard", req: "≥ 0.15 mm Courtyard", res: "PASS" },
-        { id: "FW-01",  std: "MISRA-C++ / GCC 12", param: "Pin-Header Sync (`pin_config.h`) & Static Memory Allocation", val: "0 Errors, 0 Warnings", req: "Clean Compile, <75% RAM", res: "PASS" }
-      ];
-
-      document.getElementById("report-checks-tbody").innerHTML = checks.map(c => `
-        <tr class="hover:bg-slate-900/50">
-          <td class="py-2 px-3 font-bold text-cyan-300">${c.id}</td>
-          <td class="py-2 px-3 text-slate-300">${c.std}</td>
-          <td class="py-2 px-3 text-white font-sans">${c.param}</td>
-          <td class="py-2 px-3 text-emerald-300">${c.val}</td>
-          <td class="py-2 px-3 text-slate-400">${c.req}</td>
-          <td class="py-2 px-3"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">✓ ${c.res}</span></td>
-        </tr>
-      `).join("");
-
-      document.getElementById("report-bom-tbody").innerHTML = arch.components.map(c => {
-        const item = getCatalogItem(c.catId);
-        return `
-          <tr class="hover:bg-slate-900/50">
-            <td class="py-1.5 px-3 font-bold text-cyan-300">${c.ref}</td>
-            <td class="py-1.5 px-3 text-white font-sans">${item.name} (${item.value})</td>
-            <td class="py-1.5 px-3 text-emerald-300">${item.mpn}</td>
-            <td class="py-1.5 px-3 text-amber-300">${item.package}</td>
-            <td class="py-1.5 px-3 text-slate-300">X:${c.pcbX.toFixed(1)} Y:${c.pcbY.toFixed(1)} R:${c.rot}°</td>
-            <td class="py-1.5 px-3"><span class="text-emerald-400 font-semibold">In Stock (${item.lcsc})</span></td>
-          </tr>
-        `;
-      }).join("");
-
-      const hashSuffix = Math.random().toString(16).slice(2, 18) + Math.random().toString(16).slice(2, 18);
-      document.getElementById("report-sha256").textContent = `SHA-256: 9c4e81f2a0d7${hashSuffix}b84e12a9`;
-
-      STATE.verificationHistory.unshift({
-        runId,
-        time: now.toLocaleTimeString(),
-        arch: arch.name,
-        parts: arch.components.length,
-        status: "ALL 8 GATES PASSED"
-      });
-
-      document.getElementById("verification-history-list").innerHTML = STATE.verificationHistory.map(h => `
-        <div class="flex justify-between items-center bg-slate-900/80 border border-slate-800 px-2.5 py-1 rounded">
-          <span class="text-cyan-300 font-semibold">${h.runId} (${h.time})</span>
-          <span class="text-slate-400 truncate max-w-[180px]">${h.arch}</span>
-          <span class="text-emerald-400 font-bold">✓ ${h.status}</span>
-        </div>
-      `).join("");
-
-      if (switchTab) {
-        switchWorkspaceTab("verification");
-        showToast(`Verification Report ${runId} generated — All 8 Manufacturing Gates PASSED!`, "success");
-      }
+      const checks = ['KiCad ERC', 'KiCad DRC', 'Fabricator DFM', 'Power transient', 'Thermal analysis', 'Firmware compilation'];
+      document.getElementById('report-run-id').textContent = 'DRAFT REVIEW';
+      document.getElementById('report-timestamp').textContent = now.toISOString();
+      document.getElementById('report-status-badge').textContent = 'INCOMPLETE — RELEASE BLOCKED';
+      document.getElementById('report-scorecard-grid').innerHTML = checks.map(label => `<div class="bg-slate-900 border border-slate-800 rounded-lg p-3"><div class="text-xs text-slate-400">${label}</div><div class="text-amber-300 font-semibold mt-2">NOT RUN</div></div>`).join('');
+      document.getElementById('report-checks-tbody').innerHTML = checks.map((label, i) => `<tr><td class="p-3">${i + 1}</td><td>${label}</td><td>Native tool evidence required</td><td>Unavailable</td><td>Current design revision</td><td class="text-amber-300">NOT RUN</td></tr>`).join('');
+      document.getElementById('report-bom-tbody').textContent = 'Catalog and geometry are draft data; manufacturer validation is pending.';
+      document.getElementById('report-sha256').textContent = 'No verified artifact digest. This report is not a certificate.';
+      document.getElementById('verification-history-list').textContent = 'No native verification runs recorded.';
+      if (switchTab) switchWorkspaceTab('verification');
     }
 
     // =========================================================================
@@ -1735,14 +1661,7 @@ C_DECOUP_2 VDD_3V3 0 100nF
       refreshAllViews();
       const arch = getActiveArchitecture();
       const latestRun = STATE.verificationHistory[0]?.runId || "VER-2026-1106-001";
-      addChatMessage("ai", `
-        <div>Synthesized updates across <strong>${arch.name}</strong>:</div>
-        <ul class="list-disc pl-4 text-[11px] text-slate-300 space-y-0.5">
-          <li>Updated KiCad 9.0 Schematic (<code>.kicad_sch</code>) &amp; 4-Layer PCB (<code>.kicad_pcb</code>) with ${arch.components.length} verified components.</li>
-          <li>Synchronized MCU pins into VS Code <code>include/pin_config.h</code> and <code>src/main.cpp</code>.</li>
-          <li>Executed automated ERC/DRC/DFM verification run <strong>${latestRun}</strong> — <strong>0 Errors, 100% IPC-2221B Class 2 Compliant</strong>.</li>
-        </ul>
-      `);
+      addChatMessage("ai", 'Draft workspace updated using supported preset commands. Electrical connectivity, native tool validation and manufacturing approval are still required.');
     }
 
     // =========================================================================
@@ -1760,7 +1679,7 @@ C_DECOUP_2 VDD_3V3 0 100nF
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
       }, 200);
-      showToast(`Exported ${filename} — ready for manufacturing!`, "success");
+      showToast(`Exported ${filename} — unverified engineering draft`, "success");
     }
 
     function exportArtifact(kind) {
@@ -1783,20 +1702,8 @@ C_DECOUP_2 VDD_3V3 0 100nF
         });
         downloadTextFile("DEVASHRI_MAH_QUANTUM_CPL_PICK_AND_PLACE.csv", rows.join("\n"), "text/csv;charset=utf-8");
       } else if (kind === "gerber") {
-        const gerberContent = `G04 Devashri S Embedded System Technologies — by MAH Quantum*
-G04 RS-274X Extended Gerber X2 Top Copper (F.Cu) + Excellon Drill Summary*
-%FSLAX46Y46*%
-%MOMM*%
-%TF.FileFunction,Copper,L1,Top*%
-%TF.GenerationSoftware,MAH_Quantum,Devashri_Embedded_Studio,4.0*%
-%ADD10C,0.150000*%
-%ADD11R,1.100000X0.600000*%
-D10*
-X12000000Y14000000D02*
-X34000000Y24000000D01*
-X54000000Y15000000D01*
-M02*`;
-        downloadTextFile("DEVASHRI_MAH_QUANTUM_FAB_GERBER_F_Cu.gbr", gerberContent);
+        showToast('Release blocked: native KiCad DRC and complete fabrication outputs required.', 'info');
+        return;
       } else if (kind === "firmware") {
         downloadTextFile("devashri_firmware_bundle.cpp", STATE.files["pin_config.h"] + "\n\n" + STATE.files["main.cpp"]);
       } else if (kind === "spice") {
@@ -1810,8 +1717,8 @@ M02*`;
           engineeredBy: "MAH Quantum",
           timestamp: new Date().toISOString(),
           architecture: arch.name,
-          verificationResult: "PASS_MANUFACTURING_READY",
-          standards: ["IPC-2221B Class 2", "IPC-7351B", "KiCad 9.0 ERC/DRC", "MISRA-C++"],
+          verificationResult: "INCOMPLETE", manufacturing_ready: false,
+          standards: [], checks: "Native verification not run",
           components: arch.components,
           pinmap: arch.pinmap,
           history: STATE.verificationHistory
@@ -2013,32 +1920,13 @@ M02*`;
         showToast("Synchronized KiCad Schematic pinout with include/pin_config.h", "info");
       });
       document.getElementById("btn-compile-firmware").addEventListener("click", () => {
-        const arch = getActiveArchitecture();
-        const mcu = getCatalogItem(arch.mcuId);
-        const term = document.getElementById("vscode-terminal-output");
-        term.textContent = `$ pio run -e mah_quantum_production
-Processing mah_quantum_production (board: ${mcu.name}; framework: arduino)
---------------------------------------------------------------------------------
-Verbose mode can be enabled via \`-v, --verbose\` option
-CONFIGURATION: https://docs.platformio.org/page/boards/${mcu.id}.html
-PLATFORM: Devashri S Embedded System Technologies — by MAH Quantum Toolchain v4.0
-HARDWARE: ${mcu.mpn} 240MHz, 512KB RAM, 8MB Flash
-Compiling .pio/build/src/main.cpp.o
-Compiling .pio/build/lib/bme280_driver.cpp.o
-Linking .pio/build/firmware.elf
-Checking size .pio/build/firmware.elf
-Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
-RAM:   [=         ]   8.6% (used 45120 bytes from 524288 bytes)
-Flash: [          ]   2.7% (used 223640 bytes from 8388608 bytes)
-Building .pio/build/firmware.bin
-[SUCCESS] Took 1.42 seconds — Firmware Verified & Linked with KiCad Rev 4.0 Netlist!`;
-        runFullVerificationAndGenerateReport(false);
-        showToast("Firmware compiled cleanly (0 errors, 0 warnings) & verified!", "success");
+        document.getElementById('vscode-terminal-output').textContent = 'NOT RUN: No target compiler worker is connected. Export the firmware draft and build it with the matching board toolchain. No binary, memory usage, or compliance result has been produced.';
+        showToast('Compiler unavailable — no build performed.', 'info');
       });
 
       document.getElementById("btn-stream-serial").addEventListener("click", () => {
         const term = document.getElementById("vscode-terminal-output");
-        term.textContent = `[UART0 @ 115200 BAUD — Connected to Devashri S Hardware Twin]
+        term.textContent = `[SYNTHETIC DEMO DATA — NO HARDWARE CONNECTED]
 [INIT] BME280 Environmental Sensor Online @ 0x76 (400kHz Fast-Mode)
 [INIT] MPU-6050 6-Axis IMU Calibrated @ 0x68 (DLPF=42Hz)
 [TELEMETRY #0001] T=26.42C | RH=47.8% | P=1013.21hPa | VDD=3302mV | ERC=OK
@@ -2080,12 +1968,7 @@ Building .pio/build/firmware.bin
       refreshAllViews();
       document.getElementById("btn-compile-firmware").click();
 
-      addChatMessage("ai", `
-        <div>Welcome to <strong>Devashri S Embedded System Technologies</strong> by <strong>MAH Quantum</strong> (Manufacturing Release v4.0).</div>
-        <div class="text-[11px] text-slate-300 mt-1">
-          I have unified the open-source <strong>KiCad 9.0 EDA Suite</strong> (Schematic, 4-Layer PCB, 3D Viewer, RS-274X Gerber/CPL/BOM Exporter) with the <strong>VS Code (Code-OSS) Firmware Workbench</strong> and our <strong>8-Gate Verification Report Engine</strong>.
-        </div>
-      `);
+      addChatMessage("ai", '<strong>Engineering workspace</strong><br>Explore draft architectures, inspect components, and prepare a design brief. Native KiCad checks, simulation and firmware compilation are not connected to this browser preview.');
     });
   </script>
 </body>

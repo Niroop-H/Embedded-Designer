@@ -23,6 +23,20 @@ class ConflictChecker:
         nets = topology_data.get("nets", [])
         power_rails = topology_data.get("power_rails", {})
 
+        # Check endpoints structurally without guessing electrical pin semantics.
+        refs = [str(c.get("ref", c.get("id", ""))) for c in components]
+        if len(refs) != len(set(refs)) or "" in refs:
+            conflicts.append({"severity": "ERROR", "code": "ERC_REFERENCE", "message": "Missing or duplicate component reference."})
+        endpoints = {}
+        for net in nets:
+            for endpoint in net.get("connections", []):
+                if not isinstance(endpoint, str) or "." not in endpoint or endpoint.split(".", 1)[0] not in refs:
+                    conflicts.append({"severity": "ERROR", "code": "ERC_UNKNOWN_ENDPOINT", "message": f"Unknown endpoint: {endpoint}"})
+                    continue
+                if endpoint in endpoints and endpoints[endpoint] != net.get("name"):
+                    conflicts.append({"severity": "CRITICAL", "code": "ERC_PIN_MULTINET", "message": f"{endpoint} belongs to multiple nets."})
+                endpoints[endpoint] = net.get("name")
+
         # Rule 1: Conflicting Power Rails Check
         rail_names = set()
         for net in nets:
@@ -37,7 +51,7 @@ class ConflictChecker:
 
         # Rule 2: Decoupling Capacitor Injection Check
         ic_refs = [c.get("ref", c.get("id", "")) for c in components if c.get("type") in ("ic", "mcu", "sensor")]
-        cap_refs = [c.get("ref", c.get("id", "")) for c in components if c.get("type") == "capacitor" or c.get("package") in ("0603", "0805", "0402")]
+        cap_refs = [c.get("ref", c.get("id", "")) for c in components if c.get("type") == "capacitor"]
 
         if ic_refs and len(cap_refs) < len(ic_refs):
             conflicts.append({
