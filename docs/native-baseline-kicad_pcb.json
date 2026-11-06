@@ -1,0 +1,23 @@
+{
+  "status": "ERROR",
+  "artifact": "eda-baseline.kicad_pcb",
+  "artifact_sha256": "4c45402f8b93d1fb95901943a7950ac8eddcd23ddb28cf98755764874b45185a",
+  "tool": "kicad-cli",
+  "tool_version": "9.0.2",
+  "exit_code": 3,
+  "manufacturing_ready": false,
+  "stdout": "",
+  "stderr": "Failed to load board\n",
+  "command": [
+    "kicad-cli",
+    "pcb",
+    "drc",
+    "--format",
+    "json",
+    "--severity-all",
+    "--exit-code-violations",
+    "<report.json>",
+    "<artifact>"
+  ],
+  "reason": "KiCad could not validate the artifact"
+}

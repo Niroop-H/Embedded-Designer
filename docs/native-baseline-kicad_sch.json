@@ -1,0 +1,563 @@
+{
+  "status": "FAIL",
+  "artifact": "eda-baseline.kicad_sch",
+  "artifact_sha256": "0df7a3d2fb2aed0a04ec4df4dd7a252700d74146ba7fe9012f92f8e9c52da427",
+  "tool": "kicad-cli",
+  "tool_version": "9.0.2",
+  "exit_code": 5,
+  "manufacturing_ready": false,
+  "stdout": "You have run CvPcb for the first time using the new footprint library table method for finding footprints.\nCvPcb has either copied the default table or created an empty table in your home folder.\nYou must first configure the library table to include all footprint libraries not included with KiCad.\nSee the \u201cFootprint Library Table\u201d section of the CvPcb documentation for more information. Checking sheet names...\nChecking bus conflicts...\nChecking conflicts...\nChecking units...\nChecking footprints...\nChecking pins...\nChecking similar labels...\nChecking local and global labels...\nChecking for unresolved variables...\nChecking no connect pins for connections...\nChecking for library symbol issues...\nChecking for footprint link issues...\nChecking for off grid pins and wires...\nChecking for labels on more than one wire...\nChecking for undefined netclasses...\nFound 35 violations\nSaved ERC Report to /tmp/eda-check-dwmoqwq5/report.json\n",
+  "stderr": "",
+  "command": [
+    "kicad-cli",
+    "sch",
+    "erc",
+    "--format",
+    "json",
+    "--severity-all",
+    "--exit-code-violations",
+    "<report.json>",
+    "<artifact>"
+  ],
+  "report": {
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-06T14:57:12+0000",
+    "kicad_version": "9.0.2",
+    "sheets": [
+      {
+        "path": "/",
+        "uuid_path": "/14b1d77e-d311-4d09-9557-888b60a1dc9b",
+        "violations": [
+          {
+            "description": "Symbol pin or wire end off connection grid",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.8
+                },
+                "uuid": "c5ef682e-5450-4689-ace6-730ac71001a3"
+              }
+            ],
+            "severity": "warning",
+            "type": "endpoint_off_grid"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.8
+                },
+                "uuid": "c5ef682e-5450-4689-ace6-730ac71001a3"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Wires not connected to anything",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.8
+                },
+                "uuid": "c5ef682e-5450-4689-ace6-730ac71001a3"
+              }
+            ],
+            "severity": "error",
+            "type": "wire_dangling"
+          },
+          {
+            "description": "Label not connected to anything",
+            "items": [
+              {
+                "description": "Label '5V_VBUS'",
+                "pos": {
+                  "x": 0.6,
+                  "y": 1.79
+                },
+                "uuid": "3b537309-7063-409a-bdcb-edad72f59de2"
+              }
+            ],
+            "severity": "error",
+            "type": "label_dangling"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.8
+                },
+                "uuid": "c5ef682e-5450-4689-ace6-730ac71001a3"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Symbol pin or wire end off connection grid",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.95
+                },
+                "uuid": "26467ebb-2878-4126-9bd3-021c8d610a3b"
+              }
+            ],
+            "severity": "warning",
+            "type": "endpoint_off_grid"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.95
+                },
+                "uuid": "26467ebb-2878-4126-9bd3-021c8d610a3b"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Wires not connected to anything",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.95
+                },
+                "uuid": "26467ebb-2878-4126-9bd3-021c8d610a3b"
+              }
+            ],
+            "severity": "error",
+            "type": "wire_dangling"
+          },
+          {
+            "description": "Label not connected to anything",
+            "items": [
+              {
+                "description": "Label 'I2C_SDA'",
+                "pos": {
+                  "x": 0.6,
+                  "y": 1.94
+                },
+                "uuid": "abc41d10-0fcb-4148-8afd-0ed9293ce78c"
+              }
+            ],
+            "severity": "error",
+            "type": "label_dangling"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 1.95
+                },
+                "uuid": "26467ebb-2878-4126-9bd3-021c8d610a3b"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Symbol pin or wire end off connection grid",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.8
+                },
+                "uuid": "281e6d99-4dc6-4d69-9c9e-0b4456001529"
+              }
+            ],
+            "severity": "warning",
+            "type": "endpoint_off_grid"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.8
+                },
+                "uuid": "281e6d99-4dc6-4d69-9c9e-0b4456001529"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Wires not connected to anything",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.8
+                },
+                "uuid": "281e6d99-4dc6-4d69-9c9e-0b4456001529"
+              }
+            ],
+            "severity": "error",
+            "type": "wire_dangling"
+          },
+          {
+            "description": "Label not connected to anything",
+            "items": [
+              {
+                "description": "Label '3V3_RAIL'",
+                "pos": {
+                  "x": 1.2,
+                  "y": 1.79
+                },
+                "uuid": "5bb60be7-3f23-4787-ab36-c77b0ec795e5"
+              }
+            ],
+            "severity": "error",
+            "type": "label_dangling"
+          },
+          {
+            "description": "Symbol pin or wire end off connection grid",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 2.1
+                },
+                "uuid": "d7eeccac-7441-46e9-8f86-c3a23afcf43a"
+              }
+            ],
+            "severity": "warning",
+            "type": "endpoint_off_grid"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 2.1
+                },
+                "uuid": "d7eeccac-7441-46e9-8f86-c3a23afcf43a"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Wires not connected to anything",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 2.1
+                },
+                "uuid": "d7eeccac-7441-46e9-8f86-c3a23afcf43a"
+              }
+            ],
+            "severity": "error",
+            "type": "wire_dangling"
+          },
+          {
+            "description": "Label not connected to anything",
+            "items": [
+              {
+                "description": "Label 'LED_ANODE'",
+                "pos": {
+                  "x": 0.6,
+                  "y": 2.09
+                },
+                "uuid": "e07e277b-980d-4f9d-b51d-f729fdc01240"
+              }
+            ],
+            "severity": "error",
+            "type": "label_dangling"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 0.5,
+                  "y": 2.1
+                },
+                "uuid": "d7eeccac-7441-46e9-8f86-c3a23afcf43a"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.8
+                },
+                "uuid": "281e6d99-4dc6-4d69-9c9e-0b4456001529"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Symbol pin or wire end off connection grid",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.95
+                },
+                "uuid": "a95eb552-2e68-489d-b648-388feb85eeb5"
+              }
+            ],
+            "severity": "warning",
+            "type": "endpoint_off_grid"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.95
+                },
+                "uuid": "a95eb552-2e68-489d-b648-388feb85eeb5"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Wires not connected to anything",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.95
+                },
+                "uuid": "a95eb552-2e68-489d-b648-388feb85eeb5"
+              }
+            ],
+            "severity": "error",
+            "type": "wire_dangling"
+          },
+          {
+            "description": "Label not connected to anything",
+            "items": [
+              {
+                "description": "Label 'I2C_SCL'",
+                "pos": {
+                  "x": 1.2,
+                  "y": 1.94
+                },
+                "uuid": "8c61216d-0807-4bef-93ab-6251c9badc5c"
+              }
+            ],
+            "severity": "error",
+            "type": "label_dangling"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.1,
+                  "y": 1.95
+                },
+                "uuid": "a95eb552-2e68-489d-b648-388feb85eeb5"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Symbol pin or wire end off connection grid",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.8
+                },
+                "uuid": "9a9e81f9-d3bb-4e86-af61-e3cf00d900c1"
+              }
+            ],
+            "severity": "warning",
+            "type": "endpoint_off_grid"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.8
+                },
+                "uuid": "9a9e81f9-d3bb-4e86-af61-e3cf00d900c1"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Wires not connected to anything",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.8
+                },
+                "uuid": "9a9e81f9-d3bb-4e86-af61-e3cf00d900c1"
+              }
+            ],
+            "severity": "error",
+            "type": "wire_dangling"
+          },
+          {
+            "description": "Label not connected to anything",
+            "items": [
+              {
+                "description": "Label 'GND_RAIL'",
+                "pos": {
+                  "x": 1.8,
+                  "y": 1.79
+                },
+                "uuid": "930c2c56-4ccd-4198-b557-55b68f1d5ef7"
+              }
+            ],
+            "severity": "error",
+            "type": "label_dangling"
+          },
+          {
+            "description": "Symbol pin or wire end off connection grid",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.95
+                },
+                "uuid": "160a1b2d-f241-4fb9-8baf-2f90549be4fb"
+              }
+            ],
+            "severity": "warning",
+            "type": "endpoint_off_grid"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.95
+                },
+                "uuid": "160a1b2d-f241-4fb9-8baf-2f90549be4fb"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Wires not connected to anything",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.95
+                },
+                "uuid": "160a1b2d-f241-4fb9-8baf-2f90549be4fb"
+              }
+            ],
+            "severity": "error",
+            "type": "wire_dangling"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.8
+                },
+                "uuid": "9a9e81f9-d3bb-4e86-af61-e3cf00d900c1"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          },
+          {
+            "description": "Label not connected to anything",
+            "items": [
+              {
+                "description": "Label 'STATUS_LED'",
+                "pos": {
+                  "x": 1.8,
+                  "y": 1.94
+                },
+                "uuid": "99794124-df00-4268-8b82-b9adb4cd6edb"
+              }
+            ],
+            "severity": "error",
+            "type": "label_dangling"
+          },
+          {
+            "description": "Unconnected wire endpoint",
+            "items": [
+              {
+                "description": "Horizontal Wire, length 0.2000 mm",
+                "pos": {
+                  "x": 1.7,
+                  "y": 1.95
+                },
+                "uuid": "160a1b2d-f241-4fb9-8baf-2f90549be4fb"
+              }
+            ],
+            "severity": "warning",
+            "type": "unconnected_wire_endpoint"
+          }
+        ]
+      }
+    ],
+    "source": "eda-baseline.kicad_sch"
+  },
+  "scope": "Standalone native rule check; project rules, schematic parity, libraries, functional validation and signoff remain required"
+}
