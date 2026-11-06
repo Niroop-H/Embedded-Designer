@@ -1,19 +1,24 @@
 {
   "version": 2,
-  "name": "embedded-designer",
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/api/chat", "destination": "/api/chat" },
-    { "source": "/(.*)", "destination": "/frontend/$1" }
+  "name": "devashri-s-embedded-system-technologies",
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
+    }
   ],
-  "headers": [
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
     {
       "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
-      ]
+      "destination": "/frontend/index.html"
     }
   ]
 }
