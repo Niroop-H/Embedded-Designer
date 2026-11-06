@@ -1,0 +1,194 @@
+[
+  {
+    "id": "sensor_bme280",
+    "manufacturer": "Bosch Sensortec",
+    "mpn": "BME280",
+    "description": "Temperature, humidity, and pressure sensor, I2C/SPI",
+    "category": "sensor",
+    "subcategory": "environmental",
+    "package": "LGA-8",
+    "footprint": "BME280_2.5x2.5mm",
+    "pin_count": 8,
+    "voltage_min": 1.71,
+    "voltage_typ": 3.3,
+    "voltage_max": 3.6,
+    "current_typ_ua": 3.6,
+    "current_max_ua": 714,
+    "interfaces": ["I2C", "SPI"],
+    "i2c_address": "0x76/0x77",
+    "measurements": {
+      "temperature": {"range_min_c": -40, "range_max_c": 85, "accuracy_c": 1.0, "resolution_c": 0.01},
+      "humidity": {"range_min_pct": 0, "range_max_pct": 100, "accuracy_pct": 3.0, "resolution_pct": 0.008},
+      "pressure": {"range_min_hpa": 300, "range_max_hpa": 1100, "accuracy_hpa": 1.0, "resolution_hpa": 0.18}
+    },
+    "price_usd": 2.50,
+    "operating_temp_min_c": -40,
+    "operating_temp_max_c": 85,
+    "dimensions_mm": {"length": 2.5, "width": 2.5, "height": 0.93},
+    "pins": {
+      "GND": [1, 7],
+      "CSB": 2,
+      "SDI_SDA": 3,
+      "SCK_SCL": 4,
+      "SDO_ADDR": 5,
+      "VDDIO": 6,
+      "VDD": 8
+    },
+    "decoupling_caps": [
+      {"value": "100nF", "quantity": 1, "type": "MLCC", "voltage_rating": "10V"}
+    ]
+  },
+  {
+    "id": "sensor_mpu6050",
+    "manufacturer": "InvenSense (TDK)",
+    "mpn": "MPU-6050",
+    "description": "6-axis IMU (3-axis gyro + 3-axis accelerometer), I2C",
+    "category": "sensor",
+    "subcategory": "motion",
+    "package": "QFN-24",
+    "footprint": "QFN-24-1EP_4x4mm_P0.5mm",
+    "pin_count": 24,
+    "voltage_min": 2.375,
+    "voltage_typ": 3.3,
+    "voltage_max": 3.46,
+    "current_typ_ua": 3900,
+    "current_max_ua": 5000,
+    "interfaces": ["I2C"],
+    "i2c_address": "0x68/0x69",
+    "measurements": {
+      "accelerometer": {"range": "±2/±4/±8/±16g", "resolution_bits": 16},
+      "gyroscope": {"range": "±250/±500/±1000/±2000dps", "resolution_bits": 16}
+    },
+    "price_usd": 1.80,
+    "operating_temp_min_c": -40,
+    "operating_temp_max_c": 85,
+    "dimensions_mm": {"length": 4.0, "width": 4.0, "height": 0.9},
+    "pins": {
+      "VDD": 13,
+      "GND": 18,
+      "VLOGIC": 8,
+      "SDA": 24,
+      "SCL": 23,
+      "INT": 12,
+      "AD0": 9
+    },
+    "decoupling_caps": [
+      {"value": "100nF", "quantity": 2, "type": "MLCC", "voltage_rating": "10V"},
+      {"value": "10nF", "quantity": 1, "type": "MLCC", "voltage_rating": "10V"}
+    ]
+  },
+  {
+    "id": "sensor_bh1750",
+    "manufacturer": "ROHM",
+    "mpn": "BH1750FVI-TR",
+    "description": "Digital ambient light sensor, I2C, 16-bit",
+    "category": "sensor",
+    "subcategory": "light",
+    "package": "WSOF6I",
+    "footprint": "BH1750FVI_3.0x1.6mm",
+    "pin_count": 6,
+    "voltage_min": 2.4,
+    "voltage_typ": 3.3,
+    "voltage_max": 3.6,
+    "current_typ_ua": 120,
+    "current_max_ua": 190,
+    "interfaces": ["I2C"],
+    "i2c_address": "0x23/0x5C",
+    "measurements": {
+      "illuminance": {"range_min_lx": 1, "range_max_lx": 65535, "resolution_lx": 1}
+    },
+    "price_usd": 0.85,
+    "operating_temp_min_c": -40,
+    "operating_temp_max_c": 85,
+    "dimensions_mm": {"length": 3.0, "width": 1.6, "height": 0.85},
+    "pins": {
+      "VCC": 1,
+      "ADDR": 2,
+      "GND": 3,
+      "SDA": 4,
+      "DVI": 5,
+      "SCL": 6
+    },
+    "decoupling_caps": [
+      {"value": "100nF", "quantity": 1, "type": "MLCC", "voltage_rating": "10V"}
+    ]
+  },
+  {
+    "id": "sensor_max30102",
+    "manufacturer": "Maxim Integrated",
+    "mpn": "MAX30102",
+    "description": "Pulse oximeter and heart-rate sensor, I2C",
+    "category": "sensor",
+    "subcategory": "biometric",
+    "package": "OLGA-14",
+    "footprint": "MAX30102_5.6x3.3mm",
+    "pin_count": 14,
+    "voltage_min": 1.7,
+    "voltage_typ": 1.8,
+    "voltage_max": 2.0,
+    "current_typ_ua": 600,
+    "current_max_ua": 50000,
+    "interfaces": ["I2C"],
+    "i2c_address": "0x57",
+    "measurements": {
+      "spo2": {"type": "reflective_optical"},
+      "heart_rate": {"type": "photoplethysmography"}
+    },
+    "price_usd": 3.50,
+    "operating_temp_min_c": -40,
+    "operating_temp_max_c": 85,
+    "dimensions_mm": {"length": 5.6, "width": 3.3, "height": 1.55},
+    "pins": {
+      "VDD": 7,
+      "VLED": 1,
+      "GND": [3, 12, 13],
+      "SDA": 5,
+      "SCL": 6,
+      "INT": 4
+    },
+    "decoupling_caps": [
+      {"value": "100nF", "quantity": 2, "type": "MLCC", "voltage_rating": "10V"},
+      {"value": "4.7uF", "quantity": 1, "type": "MLCC", "voltage_rating": "10V"}
+    ]
+  },
+  {
+    "id": "sensor_ads1115",
+    "manufacturer": "Texas Instruments",
+    "mpn": "ADS1115IDGSR",
+    "description": "16-bit 4-channel ADC with PGA, I2C, 860 SPS",
+    "category": "sensor",
+    "subcategory": "adc",
+    "package": "MSOP-10",
+    "footprint": "MSOP-10_3x3mm_P0.5mm",
+    "pin_count": 10,
+    "voltage_min": 2.0,
+    "voltage_typ": 3.3,
+    "voltage_max": 5.5,
+    "current_typ_ua": 150,
+    "current_max_ua": 200,
+    "interfaces": ["I2C"],
+    "i2c_address": "0x48/0x49/0x4A/0x4B",
+    "measurements": {
+      "voltage": {"resolution_bits": 16, "channels": 4, "sample_rate_sps": 860, "pga_range_v": [0.256, 0.512, 1.024, 2.048, 4.096, 6.144]}
+    },
+    "price_usd": 4.00,
+    "operating_temp_min_c": -40,
+    "operating_temp_max_c": 125,
+    "dimensions_mm": {"length": 3.0, "width": 3.0, "height": 1.1},
+    "pins": {
+      "AIN0": 1,
+      "AIN1": 2,
+      "AIN2": 3,
+      "AIN3": 4,
+      "GND": 5,
+      "VDD": 6,
+      "SDA": 7,
+      "SCL": 8,
+      "ADDR": 9,
+      "ALERT": 10
+    },
+    "decoupling_caps": [
+      {"value": "100nF", "quantity": 1, "type": "MLCC", "voltage_rating": "10V"}
+    ]
+  }
+]
